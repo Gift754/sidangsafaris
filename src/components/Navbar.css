@@ -1,39 +1,78 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #222;   /* dark bar */
+  width: 95%;
+  background: rgba(0, 0, 0, 0.6);
   padding: 15px 40px;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
+  display: flex;
 }
 
-.logo {
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
+.nav-container {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 25px;
-  margin: 0;
-  padding: 0;
+  align-items: center;
 }
 
 .nav-links li {
-  display: inline-block;
+  position: relative;
 }
 
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
+.nav-links a, .nav-links span {
+  color: white;
   font-weight: 500;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #6B6B3A;   /* safari green highlight */
+.nav-links a:hover, .nav-links span:hover {
+  color: #cbdc6b;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  margin: 5px 0;
+}
+
+.dropdown-menu a {
+  color: white;
+}
+
+/* Book Now Button */
+.btn-book {
+  background: #808626;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-book:hover {
+  background: #6d7320;
 }
