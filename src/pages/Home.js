@@ -1,12 +1,51 @@
 import "./Home.css";
 import heroImage from "../assets/images/general/Hero.jpg"; 
-import destinationIcon from "../assets/icons/destination.svg";
-import calendarIcon from "../assets/icons/calendar.svg";
-import guestsIcon from "../assets/icons/guests.svg";
-import priceIcon from "../assets/icons/price.svg";
+import {ReactComponent as DestinationIcon} from "../assets/icons/destination.svg";
+import {ReactComponent as CalendarIcon} from "../assets/icons/calendar.svg";
+import {ReactComponent as GuestsIcon} from "../assets/icons/guests.svg";
+import {ReactComponent as PriceIcon} from "../assets/icons/price.svg";
 import searchIcon from "../assets/icons/search.svg";
 
+// Import destination images (you'll need to add these to your assets)
+import tentedCampsImage from "../assets/images/general/tented-camps.jpg";
+import balloonSafariImage from "../assets/images/general/balloon-safari.jpg";
+import maasaiMaraImage from "../assets/images/general/maasai-mara.jpg";
+import nakuruParkImage from "../assets/images/general/nakuru-park.jpg";
+import samburuParkImage from "../assets/images/general/samburu-park.jpg";
+
+// Import CheckIcon for the offers section
+import {ReactComponent as CheckIcon} from "../assets/icons/check.svg";
+
 export default function Home() {
+  // Destination data
+  const destinations = [
+    {
+      title: "Tented Camps",
+      description: "Experience the wilderness in comfort with our luxury tented camps situated in the heart of nature.",
+      image: tentedCampsImage,
+    },
+    {
+      title: "Balloon Safaris",
+      description: "Soar above stunning landscapes and witness wildlife from a unique perspective with our balloon safaris.",
+      image: balloonSafariImage,
+    },
+    {
+      title: "Maasai Mara",
+      description: "Visit one of Africa's most magnificent game reserves, famous for the Great Migration and abundant wildlife.",
+      image: maasaiMaraImage,
+    },
+    {
+      title: "Nakuru National Park",
+      description: "Famous for its flamingos and diverse birdlife, Lake Nakuru is a birdwatcher's paradise.",
+      image: nakuruParkImage,
+    },
+    {
+      title: "Samburu National Park",
+      description: "Discover unique wildlife species and experience the rich culture of the Samburu people.",
+      image: samburuParkImage,
+    }
+  ];
+
   return (
     <div className="home">
       {/* Hero Section */}
@@ -37,7 +76,7 @@ export default function Home() {
         <div className="search-section"> 
           {/* Destination */}
           <div className="search-item">
-            <img src={destinationIcon} alt="Destination Icon" className="icon" />
+            <DestinationIcon className="icon" />
             <div className="search-text">
               <label>Destination</label>
               <select>
@@ -51,7 +90,7 @@ export default function Home() {
 
           {/* Date */}
           <div className="search-item">
-            <img src={calendarIcon} alt="Date Icon" className="icon" />
+            <CalendarIcon className="icon" />
             <div className="search-text">
               <label>Date</label>
               <input type="date" />
@@ -60,7 +99,7 @@ export default function Home() {
 
           {/* Guests */}
           <div className="search-item">
-            <img src={guestsIcon} alt="Guests Icon" className="icon" />
+            <GuestsIcon className="icon" />
             <div className="search-text">
               <label>Guests</label>
               <select>
@@ -75,7 +114,7 @@ export default function Home() {
 
           {/* Price */}
           <div className="search-item">
-            <img src={priceIcon} alt="Price Icon" className="icon" />
+            <PriceIcon className="icon" />
             <div className="search-text">
               <label>Budget</label>
               <input type="number" placeholder="Enter amount" />
@@ -89,6 +128,181 @@ export default function Home() {
             </button>
           </div>
         </div>
+      </section>
+
+      {/* Destinations Section */}
+      <section className="destinations-section">
+        <h2 className="section-heading">Get To Explore Different Destinations</h2>
+        <p className="section-subheading">Featured Destinations</p>
+        
+        <div className="destinations-grid">
+          {destinations.map((destination, index) => (
+            <div key={index} className="destination-card">
+              <div 
+                className="card-image" 
+                style={{ backgroundImage: `url(${destination.image})` }}
+              ></div>
+              <div className="card-content">
+                <h3>{destination.title}</h3>
+                <p>{destination.description}</p>
+                <a href="#" className="read-more">Explore {destination.title} →</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section>
+      
+<section className="offers-section">
+  <h2 className="offers-heading">Explore Our Offers</h2>
+  <p className="offers-subheading">Recommended Packages</p>
+  
+  <div className="packages-grid">
+    {/* Package 1 */}
+    <div className="package-card">
+      <div className="package-header">
+        <h3>Maasai Mara</h3>
+        <p className="package-description">Explore Kenya's Wildlife Paradise</p>
+        <p className="package-provider">With Christob Tours & Travel Ltd</p>
+      </div>
+      
+      <div className="package-features">
+        <div className="feature-item">
+          <CheckIcon className="feature-icon" />
+          <span>A Visit To A Maasai Village</span>
+        </div>
+        <div className="feature-item">
+          <CheckIcon className="feature-icon" />
+          <span>Park Fees And Government Taxes</span>
+        </div>
+        <div className="feature-item">
+          <CheckIcon className="feature-icon" />
+          <span>Airport Pick-Up And Escort At The End Of Your Safari</span>
+        </div>
+      </div>
+      
+      <div className="package-footer">
+        <div className="price-info">
+          <span className="per-person">Per Person</span>
+          <span className="price">KES 950</span>
+        </div>
+        <button className="book-now-btn">Book Now</button>
+      </div>
+    </div>
+    
+    {/* Package 2 */}
+    <div className="package-card">
+      <div className="package-header">
+        <h3>Maasai Mara</h3>
+        <p className="package-description">Explore Kenya's Wildlife Paradise</p>
+        <p className="package-provider">With Christob Tours & Travel Ltd</p>
+      </div>
+      
+      <div className="package-features">
+        <div className="feature-item">
+          <CheckIcon className="feature-icon" />
+          <span>A Visit To A Maasai Village</span>
+        </div>
+        <div className="feature-item">
+          <CheckIcon className="feature-icon" />
+          <span>Park Fees And Government Taxes</span>
+        </div>
+        <div className="feature-item">
+          <CheckIcon className="feature-icon" />
+          <span>Airport Pick-Up And Escort At The End Of Your Safari</span>
+        </div>
+      </div>
+      
+      <div className="package-footer">
+        <div className="price-info">
+          <span className="per-person">Per Person</span>
+          <span className="price">KES 950</span>
+        </div>
+        <button className="book-now-btn">Book Now</button>
+      </div>
+    </div>
+    
+    {/* Package 3 */}
+    <div className="package-card">
+      <div className="package-header">
+        <h3>Maasai M.</h3>
+        <p className="package-description">Explore Kenya with Christob</p>
+        <p className="package-provider">With Christob Tours & Travel Ltd</p>
+      </div>
+      
+      <div className="package-features">
+        <div className="feature-item">
+          <CheckIcon className="feature-icon" />
+          <span>A Visit To A Mark Fees Award</span>
+        </div>
+        <div className="feature-item">
+          <CheckIcon className="feature-icon" />
+          <span>Airport Pick-Up and Escort At the End Of Your Safari</span>
+        </div>
+      </div>
+      
+      <div className="package-footer">
+        <div className="price-info">
+          <span className="per-person">Per Person</span>
+          <span className="price">KES 950</span>
+        </div>
+        <button className="book-now-btn">Book Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+      </section>
+      <section>
+        {/* Testimonials Section */}
+<section className="testimonials-section">
+  <div className="container">
+    <h2 className="testimonials-heading">What our customers say about us.</h2>
+    
+    <div className="testimonials-grid">
+      {/* Testimonial 1 */}
+      <div className="testimonial-card">
+        <div className="testimonial-content">
+          <p>We had an amazing time on our trip to Kenya with Sidan Adventures. The tour was well-organised and the guides were very knowledgeable.</p>
+        </div>
+        <div className="testimonial-author">
+          {/* Profile picture area (commented out as requested) */}
+          {/* <div className="author-image"></div> */}
+          <div className="author-details">
+            <h4>Abaia Diana</h4>
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonial 2 */}
+      <div className="testimonial-card">
+        <div className="testimonial-content">
+          <p>We had an amazing time on our trip to Kenya with Sidan Adventures. The tour was well-organised and the guides were very knowledgeable.</p>
+        </div>
+        <div className="testimonial-author">
+          {/* Profile picture area (commented out as requested) */}
+          {/* <div className="author-image"></div> */}
+          <div className="author-details">
+            <h4>Jim Ahmed</h4>
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonial 3 */}
+      <div className="testimonial-card">
+        <div className="testimonial-content">
+          <p>We had an amazing time on our trip to Kenya with Sidan Adventures. The tour was well-organised and the guides were very knowledgeable.</p>
+        </div>
+        <div className="testimonial-author">
+          {/* Profile picture area (commented out as requested) */}
+          {/* <div className="author-image"></div> */}
+          <div className="author-details">
+            <h4>Abala Diana</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </section>
     </div>
   );

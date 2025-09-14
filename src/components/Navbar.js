@@ -1,14 +1,25 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../assets/images/logo/Sidang.svg"; 
+import { ReactComponent as Logo } from "../assets/images/logo/Sidang.svg"; 
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-container">
         {/* Logo */}
         <div className="logo">
-          <img src={logo} alt="Sidang Safaris Logo" />
+          <Logo className="logo-svg" alt="Sidang Safaris Logo" />
         </div>
 
         {/* Links */}

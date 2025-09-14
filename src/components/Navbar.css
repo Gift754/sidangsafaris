@@ -5,6 +5,11 @@
   position: fixed;
   top: 0;
   z-index: 1000;
+  transition: background 0.4s ease; /* smooth fade */
+}
+
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.85); /* visible when scrolling */
 }
 
 .nav-container {
@@ -17,6 +22,13 @@
   height: 90px;
 }
 
+/* Ensure SVG logo shows up */
+.logo-svg {
+  height: 90px;
+  width: auto;
+  fill: white; /* make it visible */
+}
+
 /* Nav Links */
 .nav-links {
   list-style: none;
@@ -26,8 +38,7 @@
   align-items: center;
   margin: 0;
   padding: 20px 60px;
-  background: rgba(108, 109, 33, 0.4)   /* fully opaque */
-
+  background: rgba(108, 109, 33, 0.4); /* semi-transparent green bubble */
 }
 
 .nav-links li {
