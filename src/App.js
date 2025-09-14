@@ -10,16 +10,20 @@ import "./App.css";
 function App() {
   return (
     <Router>
+      <div id="app-wrapper">
       <Navbar />
+      <main>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/booking" element={<Booking />} />
       </Routes>
+      </main>
       <Footer />
+      </div>
     </Router>
   );
 }
 
-export default App;
+export default App; 
