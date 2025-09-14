@@ -36,55 +36,51 @@ export default function Home() {
         {/* Search Section */}
         <div className="search-section"> 
           {/* Destination */}
-          <label className="search-item">
+          <div className="search-item">
             <img src={destinationIcon} alt="Destination Icon" className="icon" />
             <div className="search-text">
               <label>Destination</label>
-              <span>Choose your Destination</span>
+              <select>
+                <option value="">Choose your Destination</option>
+                <option value="maasai-mara">Maasai Mara</option>
+                <option value="amboseli">Amboseli</option>
+                <option value="samburu">Samburu</option>
+              </select>
             </div>
-            <select>
-              <option value="">Choose your Destination</option>
-              <option value="maasai-mara">Maasai Mara</option>
-              <option value="amboseli">Amboseli</option>
-              <option value="samburu">Samburu</option>
-            </select>
-          </label>
+          </div>
 
           {/* Date */}
-          <label className="search-item">
+          <div className="search-item">
             <img src={calendarIcon} alt="Date Icon" className="icon" />
             <div className="search-text">
               <label>Date</label>
-              <span>Choose your dates</span>
+              <input type="date" />
             </div>
-            <input type="date" />
-          </label>
+          </div>
 
           {/* Guests */}
-          <label className="search-item">
+          <div className="search-item">
             <img src={guestsIcon} alt="Guests Icon" className="icon" />
             <div className="search-text">
               <label>Guests</label>
-              <span>Select Number of Guests</span>
+              <select>
+                <option value="">Select Guests</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4+">4+ Guests</option>
+              </select>
             </div>
-            <select>
-              <option value="">Guests</option>
-              <option value="1">1 Guest</option>
-              <option value="2">2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4+">4+ Guests</option>
-            </select>
-          </label>
+          </div>
 
           {/* Price */}
-          <label className="search-item">
+          <div className="search-item">
             <img src={priceIcon} alt="Price Icon" className="icon" />
             <div className="search-text">
-              <label>Price</label>
-              <span>Set your Budget</span>
+              <label>Budget</label>
+              <input type="number" placeholder="Enter amount" />
             </div>
-            <input type="number" placeholder="Budget" />
-          </label>
+          </div>
 
           {/* Search Button */}
           <div className="search-item search-button">
