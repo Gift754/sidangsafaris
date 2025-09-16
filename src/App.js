@@ -5,25 +5,83 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Destinations from "./pages/Destinations";
 import Booking from "./pages/Booking";
-import "./App.css";
+
+// Admin
+import AdminLogin from "./admin/AdminLogin";
+import AdminDashboard from "./admin/AdminDashboard";
+
+function PublicLayout({ children }) {
+  return (
+    <>
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+}
+
+function AdminLayout({ children }) {
+  return <div className="admin-layout">{children}</div>; // Admin pages have no navbar/footer
+}
 
 function App() {
   return (
     <Router>
-      <div id="app-wrapper">
-      <Navbar />
-      <main>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/destinations" element={<Destinations />} />
-        <Route path="/booking" element={<Booking />} />
+        {/* Public routes */}
+        <Route
+          path="/"
+          element={
+            <PublicLayout>
+              <Home />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PublicLayout>
+              <About />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/destinations"
+          element={
+            <PublicLayout>
+              <Destinations />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path="/booking"
+          element={
+            <PublicLayout>
+              <Booking />
+            </PublicLayout>
+          }
+        />
+
+        {/* Admin routes */}
+        <Route
+          path="/admin/login"
+          element={
+            <AdminLayout>
+              <AdminLogin />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <AdminLayout>
+              <AdminDashboard />
+            </AdminLayout>
+          }
+        />
       </Routes>
-      </main>
-      <Footer />
-      </div>
     </Router>
   );
 }
 
-export default App; 
+export default App;
