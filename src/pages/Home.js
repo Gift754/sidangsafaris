@@ -5,6 +5,7 @@ import {ReactComponent as CalendarIcon} from "../assets/icons/calendar.svg";
 import {ReactComponent as GuestsIcon} from "../assets/icons/guests.svg";
 import {ReactComponent as PriceIcon} from "../assets/icons/price.svg";
 import searchIcon from "../assets/icons/search.svg";
+import { useState } from "react";
 
 // Import destination images (you'll need to add these to your assets)
 import tentedCampsImage from "../assets/images/general/tented-camps.jpg";
@@ -46,6 +47,21 @@ export default function Home() {
     }
   ];
 
+  const row1 = destinations.slice(0, 10);
+  const row2 = destinations.slice(10, 20);
+
+  // Carousel state for each row
+  const [row1Index, setRow1Index] = useState(0);
+  const [row2Index, setRow2Index] = useState(0);
+
+  // Carousel navigation handlers
+  const handlePrev = (row, setRow, cards) => {
+    setRow((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
+  };
+  const handleNext = (row, setRow, cards) => {
+    setRow((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <div className="home">
       {/* Hero Section */}
@@ -66,66 +82,66 @@ export default function Home() {
           <div className="btn-learn">
             <a href="/about" id="LearnMore">Learn More →</a>
           </div>
-        </div>
-
-        <div className="search-header">
-          <h3>Search Your Adventure</h3>
-        </div>
-      
-        {/* Search Section */}
-        <div className="search-section"> 
-          {/* Destination */}
-          <div className="search-item">
-            <DestinationIcon className="icon" />
-            <div className="search-text">
-              <label>Destination</label>
-              <select>
-                <option value="">Choose your Destination</option>
-                <option value="maasai-mara">Maasai Mara</option>
-                <option value="amboseli">Amboseli</option>
-                <option value="samburu">Samburu</option>
-              </select>
+          {/* Search Header and Search Section in the same div */}
+          <div className="search-area">
+            <div className="search-header">
+              <h3>Search Your Adventure</h3>
             </div>
-          </div>
+            <div className="search-section"> 
+              {/* Destination */}
+              <div className="search-item">
+                <DestinationIcon className="icon" />
+                <div className="search-text">
+                  <label>Destination</label>
+                  <select>
+                    <option value="">Choose your Destination</option>
+                    <option value="maasai-mara">Maasai Mara</option>
+                    <option value="amboseli">Amboseli</option>
+                    <option value="samburu">Samburu</option>
+                  </select>
+                </div>
+              </div>
 
-          {/* Date */}
-          <div className="search-item">
-            <CalendarIcon className="icon" />
-            <div className="search-text">
-              <label>Date</label>
-              <input type="date" />
+              {/* Date */}
+              <div className="search-item">
+                <CalendarIcon className="icon" />
+                <div className="search-text">
+                  <label>Date</label>
+                  <input type="date" />
+                </div>
+              </div>
+
+              {/* Guests */}
+              <div className="search-item">
+                <GuestsIcon className="icon" />
+                <div className="search-text">
+                  <label>Guests</label>
+                  <select>
+                    <option value="">Select Guests</option>
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4+">4+ Guests</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Price */}
+              <div className="search-item">
+                <PriceIcon className="icon" />
+                <div className="search-text">
+                  <label>Budget</label>
+                  <input type="number" placeholder="Enter amount" />
+                </div>
+              </div>
+
+              {/* Search Button */}
+              <div className="search-item search-button">
+                <button>
+                  Search <img src={searchIcon} alt="Search Icon" />
+                </button>
+              </div>
             </div>
-          </div>
-
-          {/* Guests */}
-          <div className="search-item">
-            <GuestsIcon className="icon" />
-            <div className="search-text">
-              <label>Guests</label>
-              <select>
-                <option value="">Select Guests</option>
-                <option value="1">1 Guest</option>
-                <option value="2">2 Guests</option>
-                <option value="3">3 Guests</option>
-                <option value="4+">4+ Guests</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Price */}
-          <div className="search-item">
-            <PriceIcon className="icon" />
-            <div className="search-text">
-              <label>Budget</label>
-              <input type="number" placeholder="Enter amount" />
-            </div>
-          </div>
-
-          {/* Search Button */}
-          <div className="search-item search-button">
-            <button>
-              Search <img src={searchIcon} alt="Search Icon" />
-            </button>
           </div>
         </div>
       </section>
@@ -134,21 +150,78 @@ export default function Home() {
       <section className="destinations-section">
         <h2 className="section-heading">Get To Explore Different Destinations</h2>
         <p className="section-subheading">Featured Destinations</p>
-        
-        <div className="destinations-grid">
-          {destinations.map((destination, index) => (
-            <div key={index} className="destination-card">
-              <div 
-                className="card-image" 
-                style={{ backgroundImage: `url(${destination.image})` }}
-              ></div>
-              <div className="card-content">
-                <h3>{destination.title}</h3>
-                <p>{destination.description}</p>
-                <a href="#" className="read-more">Explore {destination.title} →</a>
+        <div className="destinations-rows">
+          {/* Single Scrollable Row */}
+          <div className="carousel-row">
+            <button
+              className="carousel-arrow left"
+              onClick={() => {
+                const track = document.querySelector('.carousel-track');
+                if (track) track.scrollBy({ left: -400, behavior: 'smooth' });
+              }}
+              aria-label="Previous"
+            >
+              &lt;
+            </button>
+            <div className="carousel-track" style={{ overflowX: "auto", scrollBehavior: "smooth", width: "100%" }}>
+              <div className="carousel-cards" style={{ display: "flex", gap: "30px" }}>
+                {row1.map((destination, idx) => (
+                  <div
+                    key={idx}
+                    className="destination-card carousel-card"
+                    style={{
+                      minWidth: "360px",
+                      maxWidth: "400px",
+                      height: "100%",
+                      background: "#fff",
+                      borderRadius: "18px",
+                      boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-start"
+                    }}
+                  >
+                    <div
+                      className="card-image"
+                      style={{
+                        backgroundImage: `url(${destination.image})`,
+                        height: "220px",
+                        borderRadius: "18px 18px 0 0",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center"
+                      }}
+                    ></div>
+                    <div
+                      className="card-content"
+                      style={{
+                        flex: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-start",
+                        padding: "24px"
+                      }}
+                    >
+                      <h3 style={{ fontSize: "2rem", marginBottom: "12px" }}>{destination.title}</h3>
+                      <p style={{ fontSize: "1.1rem", marginBottom: "18px" }}>{destination.description}</p>
+                      <a href="#" className="read-more" style={{ fontSize: "1rem", marginTop: "auto" }}>
+                        Explore {destination.title} →
+                      </a>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+            <button
+              className="carousel-arrow right"
+              onClick={() => {
+                const track = document.querySelector('.carousel-track');
+                if (track) track.scrollBy({ left: 400, behavior: 'smooth' });
+              }}
+              aria-label="Next"
+            >
+              &gt;
+            </button>
+          </div>
         </div>
       </section>
       <section>

@@ -1,7 +1,7 @@
 .navbar {
   width: 100%;
   background: rgba(0, 0, 0, 0);
-  padding: 15px 40px;
+  padding: 10px 26px; /* reduced vertical and horizontal padding */
   position: fixed;
   top: 0;
   z-index: 1000;
@@ -9,7 +9,7 @@
 }
 
 .navbar.scrolled {
-  background: rgba(0, 0, 0, 0.85); /* visible when scrolling */
+  background: rgba(0, 0, 0, 0.75); /* visible when scrolling */
 }
 
 .nav-container {
@@ -18,13 +18,9 @@
   align-items: center;
 }
 
-.logo img {
-  height: 90px;
-}
-
-/* Ensure SVG logo shows up */
+.logo img,
 .logo-svg {
-  height: 90px;
+  height: 80px; /* reduced logo height */
   width: auto;
   fill: white; /* make it visible */
 }
@@ -33,11 +29,11 @@
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 80px;
+  gap: 50px; /* reduced gap between links */
   border-radius: 40px;
   align-items: center;
   margin: 0;
-  padding: 20px 60px;
+  padding: 20px 20px; /* reduced padding */
   background: rgba(108, 109, 33, 0.4); /* semi-transparent green bubble */
 }
 
@@ -83,12 +79,12 @@
 .btn-book {
   background: #6d7320;
   color: white !important;
-  padding: 10px 20px;
+  padding: 6px 14px; /* reduced button size */
   border-radius: 25px;
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s ease;
-  margin-right: 60px;
+  margin-right: 30px; /* reduced right margin */
 }
 
 .btn-book:hover {
