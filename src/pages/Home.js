@@ -71,7 +71,7 @@ export default function Home() {
         <div className="search-header">
           <h3>Search Your Adventure</h3>
         </div>
-
+      
         {/* Search Section */}
         <div className="search-section"> 
           {/* Destination */}

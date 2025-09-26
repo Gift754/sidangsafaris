@@ -81,7 +81,7 @@
 
 /* Book Now Button */
 .btn-book {
-  background: #808626;
+  background: #6d7320;
   color: white !important;
   padding: 10px 20px;
   border-radius: 25px;
@@ -92,5 +92,5 @@
 }
 
 .btn-book:hover {
-  background: #6d7320;
+  background: #808626;
 }
