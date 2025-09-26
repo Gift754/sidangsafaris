@@ -67,7 +67,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
         <div className="hero-overlay">
-          <h3>DISCOVER YOUR NEXT</h3>
+          <h3 className>DISCOVER YOUR NEXT</h3>
           <h1>ADVENTURE</h1>
           <h2>Your Gateway To Exploring Kenya's Wonders</h2>
           <p>
