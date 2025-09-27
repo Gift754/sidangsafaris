@@ -1,11 +1,12 @@
 .navbar {
   width: 100%;
   background: rgba(0, 0, 0, 0);
-  padding: 10px 26px; /* reduced vertical and horizontal padding */
+  padding: 10px 15px; /* reduced vertical and horizontal padding */
   position: fixed;
   top: 0;
   z-index: 1000;
   transition: background 0.4s ease; /* smooth fade */
+  padding-top: 5px; /* slight top padding */
 }
 
 .navbar.scrolled {
