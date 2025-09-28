@@ -5,7 +5,7 @@ import {ReactComponent as CalendarIcon} from "../assets/icons/calendar.svg";
 import {ReactComponent as GuestsIcon} from "../assets/icons/guests.svg";
 import {ReactComponent as PriceIcon} from "../assets/icons/price.svg";
 import searchIcon from "../assets/icons/search.svg";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 // Import destination images (you'll need to add these to your assets)
 import tentedCampsImage from "../assets/images/general/tented-camps.jpg";
@@ -16,6 +16,9 @@ import samburuParkImage from "../assets/images/general/samburu-park.jpg";
 
 // Import CheckIcon for the offers section
 import {ReactComponent as CheckIcon} from "../assets/icons/check.svg";
+
+const CARDS_PER_VIEW = 3; // Change to your desired number of visible cards
+const OFFERS_PER_VIEW = 3; // Number of visible offer cards
 
 export default function Home() {
   // Destination data
@@ -54,6 +57,28 @@ export default function Home() {
   const [row1Index, setRow1Index] = useState(0);
   const [row2Index, setRow2Index] = useState(0);
 
+  // Carousel state for destinations dots
+  const [destIndex, setDestIndex] = useState(0);
+  const destTrackRef = useRef(null);
+
+  useEffect(() => {
+    const track = destTrackRef.current;
+    if (!track) return;
+
+    const handleScroll = () => {
+      const cardWidth = 380 + 30; // card width + gap (match your CSS)
+      const scrollLeft = track.scrollLeft;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setDestIndex(newIndex);
+    };
+
+    track.addEventListener("scroll", handleScroll);
+    return () => track.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Calculate number of dots dynamically
+  const numDots = Math.max(1, Math.ceil(row1.length / CARDS_PER_VIEW));
+
   // Carousel navigation handlers
   const handlePrev = (row, setRow, cards) => {
     setRow((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
@@ -62,14 +87,118 @@ export default function Home() {
     setRow((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
   };
 
+  // Sample offers data (add more for testing)
+  const offers = [
+    {
+      title: "Maasai Mara",
+      description: "Explore Kenya's Wildlife Paradise",
+      provider: "With Christob Tours & Travel Ltd",
+      features: [
+        "A Visit To A Maasai Village",
+        "Park Fees And Government Taxes",
+        "Airport Pick-Up And Escort At The End Of Your Safari"
+      ],
+      price: "KES 950"
+    },
+    {
+      title: "Amboseli Adventure",
+      description: "See Kilimanjaro's Majestic Views",
+      provider: "With Amboseli Safaris",
+      features: [
+        "Game Drives",
+        "All Meals Included",
+        "Guided Nature Walks"
+      ],
+      price: "KES 1200"
+    },
+    {
+      title: "Samburu Experience",
+      description: "Discover Unique Wildlife",
+      provider: "With Samburu Expeditions",
+      features: [
+        "Cultural Visits",
+        "Luxury Tented Camps",
+        "River Safari"
+      ],
+      price: "KES 1100"
+    },
+    {
+      title: "Lake Nakuru Birding",
+      description: "Birdwatcher's Paradise",
+      provider: "With Nakuru Bird Tours",
+      features: [
+        "Flamingo Watching",
+        "Park Fees Included",
+        "Expert Bird Guides"
+      ],
+      price: "KES 800"
+    },
+    {
+      title: "Balloon Safari",
+      description: "Soar Above the Savannah",
+      provider: "With Balloon Safaris Kenya",
+      features: [
+        "Sunrise Balloon Ride",
+        "Champagne Breakfast",
+        "Wildlife Spotting"
+      ],
+      price: "KES 2000"
+    },
+    {
+      title: "Tsavo Explorer",
+      description: "Vast Wilderness Awaits",
+      provider: "With Tsavo Tours",
+      features: [
+        "Big Five Safari",
+        "Luxury Lodge Stay",
+        "Scenic Drives"
+      ],
+      price: "KES 1500"
+    },
+    {
+      title: "Nairobi City Tour",
+      description: "Discover Urban Kenya",
+      provider: "With Nairobi Excursions",
+      features: [
+        "Museum Visits",
+        "Giraffe Centre",
+        "Karen Blixen House"
+      ],
+      price: "KES 600"
+    }
+    // Add more offers as needed for testing
+  ];
+
+  // Carousel state for offers dots
+  const [offersIndex, setOffersIndex] = useState(0);
+  const offersTrackRef = useRef(null);
+
+  useEffect(() => {
+    const track = offersTrackRef.current;
+    if (!track) return;
+
+    const handleScroll = () => {
+      const cardWidth = 350 + 30; // card width + gap (match your CSS)
+      const scrollLeft = track.scrollLeft;
+      const newIndex = Math.round(scrollLeft / (cardWidth * OFFERS_PER_VIEW));
+      setOffersIndex(newIndex);
+    };
+
+    track.addEventListener("scroll", handleScroll);
+    return () => track.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Calculate number of dots dynamically
+  const numOfferDots = Math.max(1, Math.ceil(offers.length / OFFERS_PER_VIEW));
+
   return (
     <div className="home">
       {/* Hero Section */}
       <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
         <div className="hero-overlay">
-          <h3 className>DISCOVER YOUR NEXT</h3>
-          <h1>ADVENTURE</h1>
-          <h2>Your Gateway To Exploring Kenya's Wonders</h2>
+          <h3 className="hero-header">DISCOVER YOUR NEXT</h3>
+          <h1 className="HeroHeader" >ADVENTURE</h1>
+          <h2 className="hero-Subheader">Your Gateway To Exploring Kenya's Wonders</h2>
           <p>
             Sidang Safaris is a premier tour company based in Kenya, 
             dedicated to providing exceptional travel experiences 
@@ -151,28 +280,21 @@ export default function Home() {
         <h2 className="section-heading">Get To Explore Different Destinations</h2>
         <p className="section-subheading">Featured Destinations</p>
         <div className="destinations-rows">
-          {/* Single Scrollable Row */}
           <div className="carousel-row">
-            <button
-              className="carousel-arrow left"
-              onClick={() => {
-                const track = document.querySelector('.carousel-track');
-                if (track) track.scrollBy({ left: -400, behavior: 'smooth' });
-              }}
-              aria-label="Previous"
+            <div
+              className="carousel-track"
+              ref={destTrackRef}
+              style={{ overflowX: "auto", scrollBehavior: "smooth", width: "100%" }}
             >
-              &lt;
-            </button>
-            <div className="carousel-track" style={{ overflowX: "auto", scrollBehavior: "smooth", width: "100%" }}>
               <div className="carousel-cards" style={{ display: "flex", gap: "30px" }}>
                 {row1.map((destination, idx) => (
                   <div
                     key={idx}
                     className="destination-card carousel-card"
                     style={{
-                      minWidth: "360px",
-                      maxWidth: "400px",
-                      height: "100%",
+                      minWidth: "380px",
+                      maxWidth: "380px",
+                      height: "480px",
                       background: "#fff",
                       borderRadius: "18px",
                       boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
@@ -185,25 +307,16 @@ export default function Home() {
                       className="card-image"
                       style={{
                         backgroundImage: `url(${destination.image})`,
-                        height: "220px",
+                        height: "200px",
                         borderRadius: "18px 18px 0 0",
                         backgroundSize: "cover",
                         backgroundPosition: "center"
                       }}
                     ></div>
-                    <div
-                      className="card-content"
-                      style={{
-                        flex: 1,
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "flex-start",
-                        padding: "24px"
-                      }}
-                    >
-                      <h3 style={{ fontSize: "2rem", marginBottom: "12px" }}>{destination.title}</h3>
-                      <p style={{ fontSize: "1.1rem", marginBottom: "18px" }}>{destination.description}</p>
-                      <a href="#" className="read-more" style={{ fontSize: "1rem", marginTop: "auto" }}>
+                    <div className="card-content">
+                      <h3>{destination.title}</h3>
+                      <p>{destination.description}</p>
+                      <a href="#" className="read-more">
                         Explore {destination.title} →
                       </a>
                     </div>
@@ -211,16 +324,20 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <button
-              className="carousel-arrow right"
-              onClick={() => {
-                const track = document.querySelector('.carousel-track');
-                if (track) track.scrollBy({ left: 400, behavior: 'smooth' });
-              }}
-              aria-label="Next"
-            >
-              &gt;
-            </button>
+            <div className="carousel-dots">
+              {Array.from({ length: numDots }).map((_, idx) => (
+                <span
+                  key={idx}
+                  className={`carousel-dot${destIndex === idx ? " active" : ""}`}
+                  onClick={() => {
+                    if (destTrackRef.current) {
+                      const cardWidth = 380 + 30;
+                      destTrackRef.current.scrollTo({ left: idx * cardWidth * CARDS_PER_VIEW, behavior: "smooth" });
+                    }
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -230,97 +347,67 @@ export default function Home() {
   <h2 className="offers-heading">Explore Our Offers</h2>
   <p className="offers-subheading">Recommended Packages</p>
   
-  <div className="packages-grid">
-    {/* Package 1 */}
-    <div className="package-card">
-      <div className="package-header">
-        <h3>Maasai Mara</h3>
-        <p className="package-description">Explore Kenya's Wildlife Paradise</p>
-        <p className="package-provider">With Christob Tours & Travel Ltd</p>
-      </div>
-      
-      <div className="package-features">
-        <div className="feature-item">
-          <CheckIcon className="feature-icon" />
-          <span>A Visit To A Maasai Village</span>
-        </div>
-        <div className="feature-item">
-          <CheckIcon className="feature-icon" />
-          <span>Park Fees And Government Taxes</span>
-        </div>
-        <div className="feature-item">
-          <CheckIcon className="feature-icon" />
-          <span>Airport Pick-Up And Escort At The End Of Your Safari</span>
-        </div>
-      </div>
-      
-      <div className="package-footer">
-        <div className="price-info">
-          <span className="per-person">Per Person</span>
-          <span className="price">KES 950</span>
-        </div>
-        <button className="book-now-btn">Book Now</button>
-      </div>
-    </div>
-    
-    {/* Package 2 */}
-    <div className="package-card">
-      <div className="package-header">
-        <h3>Maasai Mara</h3>
-        <p className="package-description">Explore Kenya's Wildlife Paradise</p>
-        <p className="package-provider">With Christob Tours & Travel Ltd</p>
-      </div>
-      
-      <div className="package-features">
-        <div className="feature-item">
-          <CheckIcon className="feature-icon" />
-          <span>A Visit To A Maasai Village</span>
-        </div>
-        <div className="feature-item">
-          <CheckIcon className="feature-icon" />
-          <span>Park Fees And Government Taxes</span>
-        </div>
-        <div className="feature-item">
-          <CheckIcon className="feature-icon" />
-          <span>Airport Pick-Up And Escort At The End Of Your Safari</span>
-        </div>
-      </div>
-      
-      <div className="package-footer">
-        <div className="price-info">
-          <span className="per-person">Per Person</span>
-          <span className="price">KES 950</span>
-        </div>
-        <button className="book-now-btn">Book Now</button>
+  <div className="offers-carousel-row">
+    <div
+      className="offers-carousel-track"
+      ref={offersTrackRef}
+      style={{ overflowX: "auto", scrollBehavior: "smooth", width: "100%" }}
+    >
+      <div className="offers-carousel-cards" style={{ display: "flex", gap: "30px" }}>
+        {offers.map((offer, idx) => (
+          <div
+            key={idx}
+            className="package-card offers-carousel-card"
+            style={{
+              minWidth: "350px",
+              maxWidth: "350px",
+              background: "#fff",
+              borderRadius: "10px",
+              boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)",
+              flexShrink: 0,
+              display: "flex",
+              flexDirection: "column",
+              marginRight: "30px"
+            }}
+          >
+            <div className="package-header">
+              <h3>{offer.title}</h3>
+              <p className="package-description">{offer.description}</p>
+              <p className="package-provider">{offer.provider}</p>
+            </div>
+            <div className="package-features">
+              {offer.features.map((feature, fidx) => (
+                <div className="feature-item" key={fidx}>
+                  {/* Replace with your CheckIcon if available */}
+                  <span className="feature-icon">✔</span>
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+            <div className="package-footer">
+              <div className="price-info">
+                <span className="per-person">Per Person</span>
+                <span className="price">{offer.price}</span>
+              </div>
+              <button className="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-    
-    {/* Package 3 */}
-    <div className="package-card">
-      <div className="package-header">
-        <h3>Maasai M.</h3>
-        <p className="package-description">Explore Kenya with Christob</p>
-        <p className="package-provider">With Christob Tours & Travel Ltd</p>
-      </div>
-      
-      <div className="package-features">
-        <div className="feature-item">
-          <CheckIcon className="feature-icon" />
-          <span>A Visit To A Mark Fees Award</span>
-        </div>
-        <div className="feature-item">
-          <CheckIcon className="feature-icon" />
-          <span>Airport Pick-Up and Escort At the End Of Your Safari</span>
-        </div>
-      </div>
-      
-      <div className="package-footer">
-        <div className="price-info">
-          <span className="per-person">Per Person</span>
-          <span className="price">KES 950</span>
-        </div>
-        <button className="book-now-btn">Book Now</button>
-      </div>
+    <div className="carousel-dots">
+      {Array.from({ length: numOfferDots }).map((_, idx) => (
+        <span
+          key={idx}
+          className={`carousel-dot${offersIndex === idx ? " active" : ""}`}
+          onClick={() => {
+            if (offersTrackRef.current) {
+              const cardWidth = 350 + 30;
+              offersTrackRef.current.scrollTo({ left: idx * cardWidth * OFFERS_PER_VIEW, behavior: "smooth" });
+            }
+          }}
+        />
+      ))}
     </div>
   </div>
 </section>

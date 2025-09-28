@@ -5,7 +5,8 @@ body {
   padding: 0;
 }
 
-h1, h2 {
+.app h1, 
+.app h2 {
   color: #2d2d2d;
 }
 
