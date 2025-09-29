@@ -5,10 +5,7 @@
   margin-top: 60px;
 }
 
-.booking-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.booking-card { 
   padding: 30px;
   max-width: 700px;
   width: 100%;

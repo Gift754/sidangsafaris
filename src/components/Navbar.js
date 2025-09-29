@@ -47,6 +47,7 @@ export default function Navbar() {
             </ul>
           </li>
           <li><Link to="/booking">Booking</Link></li>
+          <li><Link to="/about">About Us</Link></li>
           <li><Link to="/contact">Contact Us</Link></li>
         </ul>
 
