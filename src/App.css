@@ -82,3 +82,9 @@ body {
 main {
   flex: 1; /* take up remaining space so footer is pushed down */
 }
+/* Remove purple + underline from all links */
+a,
+a:visited {
+  color: white;            /* or inherit if you want it to follow parent */
+  text-decoration: none;   /* removes underline */
+}
