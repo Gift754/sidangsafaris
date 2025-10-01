@@ -1,0 +1,102 @@
+.navbar {
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+  padding: 10px 40px; /* reduced vertical and horizontal padding */
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.4s ease; /* smooth fade */
+  padding-top: 5px; /* slight top padding */
+}
+
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.75); /* visible when scrolling */
+}
+
+.nav-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%; /* span full width */
+  margin: 0;
+  padding: 0; /* remove padding */
+}
+
+.logo img,
+.logo-svg {
+  height: 100px; /* reduced logo height */
+  width: auto;
+  fill: white; /* make it visible */
+  margin-right: 24px; /* reduced right margin */
+  justify-self: start;
+}
+
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 50px; /* reduced gap between links */
+  border-radius: 40px;
+  align-items: center;
+  margin: 0;
+  padding: 20px 20px; /* reduced padding */
+  background: rgba(108, 109, 33, 0.4); /* semi-transparent green bubble */
+  justify-self: center;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a,
+.nav-links span {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links span:hover {
+  color: #cbdc6b;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  margin: 5px 0;
+}
+
+.dropdown-menu a {
+  color: white;
+}
+
+/* Book Now Button */
+.btn-book {
+  background: #6d7320;
+  color: white !important;
+  padding: 6px 14px; /* reduced button size */
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  margin-right: 70px; /* reduced right margin */
+  justify-self: end;
+}
+
+.btn-book:hover {
+  background: #808626;
+}

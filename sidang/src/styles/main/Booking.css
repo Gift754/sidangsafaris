@@ -1,0 +1,111 @@
+.booking-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  margin-top: 60px;
+}
+
+.booking-card {
+  padding: 30px;
+  max-width: 700px;
+  width: 100%;
+}
+
+/* Tabs */
+.booking-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 25px;
+  background: #eee;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background: #6d7320;
+  color: white;
+}
+
+/* Trip details row */
+.trip-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.trip-field {
+  background: #f7f7f7;
+  border-radius: 25px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.trip-field .icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.trip-field select,
+.trip-field input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+}
+
+/* Form */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form select {
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  width: 100%;
+}
+
+.booking-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Row inside form */
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+/* Pay Button */
+.pay-btn {
+  background: #6d7320;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.pay-btn:hover {
+  background: #808626;
+}
