@@ -70,7 +70,10 @@
   gap: 15px;
 }
 
-.booking-form input,
+.firstname,
+.email,
+.lastname,
+.payment,
 .booking-form textarea,
 .booking-form select {
   border: none;
