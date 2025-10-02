@@ -105,8 +105,9 @@ export default function Booking() {
               <span className="icon"><FaCar /></span>
               <select>
                 <option>Vehicle</option>
-                <option>SUV</option>
+                <option>Safari Land Cruizer</option>
                 <option>Van</option>
+                <option>Bus</option>
               </select>
             </div>
             <div className="trip-field">
