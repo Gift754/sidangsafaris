@@ -78,11 +78,16 @@ body {
 #app-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* full height of viewport */
+  flex: 1;
+  min-height: 100vh;
+  /* Remove justify-content and justify-items */
 }
 
 main {
-  flex: 1; /* take up remaining space so footer is pushed down */
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* Remove purple + underline from all links */
 a,
