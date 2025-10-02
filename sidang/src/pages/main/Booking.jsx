@@ -78,9 +78,19 @@ export default function Booking() {
 
         {/* Form */}
         <form className="booking-form" onSubmit={handleSubmit}>
-          <input type="text" placeholder="First Name" required />
-          <input type="text" placeholder="Last Name" required />
-          <input type="email" placeholder="E-mail" required />
+          <input
+            type="text"
+            placeholder="First Name"
+            required
+            className="firstname"
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            required
+            className="lastname"
+          />
+          <input type="email" placeholder="E-mail" required className="email" />
           <textarea placeholder="Any Specifications Regarding your Trip?" />
 
           {/* Vehicle & Date */}
@@ -125,7 +135,11 @@ export default function Booking() {
 
           {/* Card Input Field (only if card selected) */}
           {paymentMethod === "card" && (
-            <input type="text" placeholder="Enter your Card Details" />
+            <input
+              type="text"
+              placeholder="Enter your Card Details"
+              className="payment"
+            />
           )}
 
           {/* Pay Button */}
