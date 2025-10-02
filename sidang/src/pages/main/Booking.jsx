@@ -1,31 +1,37 @@
 import "../../styles/main/Booking.css";
 import { useState } from "react";
+import { FaMapMarkerAlt, FaLocationArrow, FaUsers, FaCar, FaCalendarAlt } from "react-icons/fa";
 
 export default function Booking() {
   const [activeTab, setActiveTab] = useState("Regular");
+  const [showPaymentPrompt, setShowPaymentPrompt] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState(""); // track chosen payment
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShowPaymentPrompt(true);
+  };
 
-    // For now, just simulate payment
-    console.log("Booking submitted with payment method:", paymentMethod);
+  const handlePaymentSelect = (method) => {
+    setPaymentMethod(method);
+    setShowPaymentPrompt(false);
 
     // ----------------------------
     // 🔐 PAYMENT INTEGRATION HERE
     // ----------------------------
-    // if (paymentMethod === "mpesa") {
-    //   Call Mpesa Daraja API (STK Push) from backend
-    //   -> Safaricom sends prompt to user’s phone
-    //   -> On success/failure, receive callback in backend
-    //   -> Send email confirmation via Nodemailer/Spring Mail
-    // }
-    //
-    // if (paymentMethod === "card") {
-    //   Use Stripe / Flutterwave / Paystack Checkout
-    //   -> Redirect or modal for card input
-    //   -> On success/failure, trigger email notification
-    // }
+    if (method === "mpesa") {
+      // Call Mpesa Daraja API (STK Push) from backend
+      // -> Safaricom sends prompt to user’s phone
+      // -> On success/failure, receive callback in backend
+      // -> Send email confirmation via Nodemailer/Spring Mail
+      console.log("Mpesa payment selected");
+    }
+    if (method === "card") {
+      // Use Stripe / Flutterwave / Paystack Checkout
+      // -> Redirect or modal for card input
+      // -> On success/failure, trigger email notification
+      console.log("Card payment selected");
+    }
   };
 
   return (
@@ -50,7 +56,7 @@ export default function Booking() {
         {/* Trip Details Row */}
         <div className="trip-details">
           <div className="trip-field">
-            <span className="icon">📍</span>
+            <span className="icon"><FaMapMarkerAlt /></span>
             <select>
               <option>Pick-up Point</option>
               <option>Nairobi</option>
@@ -58,7 +64,7 @@ export default function Booking() {
             </select>
           </div>
           <div className="trip-field">
-            <span className="icon">📌</span>
+            <span className="icon"><FaLocationArrow /></span>
             <select>
               <option>Destination</option>
               <option>Amboseli</option>
@@ -66,7 +72,7 @@ export default function Booking() {
             </select>
           </div>
           <div className="trip-field">
-            <span className="icon">👥</span>
+            <span className="icon"><FaUsers /></span>
             <select>
               <option>Guests</option>
               <option>1</option>
@@ -96,7 +102,7 @@ export default function Booking() {
           {/* Vehicle & Date */}
           <div className="form-row">
             <div className="trip-field">
-              <span className="icon">🚙</span>
+              <span className="icon"><FaCar /></span>
               <select>
                 <option>Vehicle</option>
                 <option>SUV</option>
@@ -104,49 +110,43 @@ export default function Booking() {
               </select>
             </div>
             <div className="trip-field">
-              <span className="icon">📅</span>
+              <span className="icon"><FaCalendarAlt /></span>
               <input type="date" />
             </div>
           </div>
-
-          {/* Payment Options */}
-          <div className="payment-options">
-            <label>
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="mpesa"
-                checked={paymentMethod === "mpesa"}
-                onChange={(e) => setPaymentMethod(e.target.value)}
-              />
-              Mpesa
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="card"
-                checked={paymentMethod === "card"}
-                onChange={(e) => setPaymentMethod(e.target.value)}
-              />
-              Credit/Debit Card
-            </label>
-          </div>
-
-          {/* Card Input Field (only if card selected) */}
-          {paymentMethod === "card" && (
-            <input
-              type="text"
-              placeholder="Enter your Card Details"
-              className="payment"
-            />
-          )}
 
           {/* Pay Button */}
           <button type="submit" className="pay-btn">
             Pay
           </button>
         </form>
+
+        {/* Payment Method Prompt */}
+        {showPaymentPrompt && (
+          <div className="payment-prompt">
+            <div className="prompt-content">
+              <h3>Select Payment Method</h3>
+              <button
+                className="pay-option"
+                onClick={() => handlePaymentSelect("mpesa")}
+              >
+                Mpesa
+              </button>
+              <button
+                className="pay-option"
+                onClick={() => handlePaymentSelect("card")}
+              >
+                Credit/Debit Card
+              </button>
+              <button
+                className="pay-option cancel"
+                onClick={() => setShowPaymentPrompt(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
