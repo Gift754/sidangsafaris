@@ -1,39 +1,23 @@
 /* Hero Section */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hero {
   position: relative;
   background: url("../assets/images/general/Hero.jpg") center/cover no-repeat;
-  height: 90vh; /* Full screen height */
-  color: #ffffff;
-  font-family: "Roboto Slab";
-
+  height: auto; /* full screen height */
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Push text up, search down */
+  justify-content: center; /* center content vertically */
   align-items: center;
-  padding-top: 100px; /* Space from top */
-  padding-bottom: 0px; /* Space from bottom */
-  padding-left: 80px;
-  padding-right: 80px;
-}
-
-.HeroHeader {
-  font-size: clamp(2.5rem, 6vw, 4.5rem); /* scales with screen */
-  margin: 20px 0 20px 0;
-  font-weight: 700;
-  text-align: center;
-}
-
-.hero-header {
-  font-size: clamp(1rem, 1.5vw, 2rem); /* scales with screen */
-  margin: 20px 0 20px 0;
-  font-weight: 500;
-  text-align: center;
-}
-.hero-Subheader {
-  font-size: clamp(1.2rem, 3vw, 1.8rem); /* scales with screen */
-  margin: 20px 0 20px 0;
-  font-weight: 400;
-  text-align: center;
+  padding: 5% 10%; /* responsive horizontal padding */
+  color: #ffffff;
+  font-family: "Roboto Slab";
+  padding-top: 10%;
 }
 
 .hero::before {
@@ -44,54 +28,82 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1; /* Overlay is below the text */
+  z-index: 1;
 }
 
 .hero * {
   position: relative;
-  z-index: 3; /* All text/content above overlay */
-}
-.hero-overlay {
-  text-align: center;
-  max-width: auto;
-  color: white;
+  z-index: 2; /* all text above overlay */
 }
 
+/* Hero Overlay */
+.hero-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px; /* optional for very large screens */
+  width: 100%;
+  gap: 1rem;
+  text-align: center;
+}
+
+/* Headings and Paragraph */
+.HeroHeader {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  margin: 0.5em 0;
+}
+
+.hero-header {
+  font-size: clamp(1rem, 1.5vw, 2rem);
+  font-weight: 500;
+  margin: 0.5em 0;
+}
+
+.hero-Subheader {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 400;
+  margin: 0.5em 0;
+}
+
+.hero-overlay p {
+  font-size: clamp(1rem, 1.3vw, 1rem);
+  margin: 0.5em 0;
+  width: 100%;
+  max-width: 1200px; /* keeps paragraph readable on huge screens */
+  padding: 0;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+/* Button */
 .btn-learn {
   background: #808626;
   color: #fff;
   font-weight: 200;
   text-decoration: none !important;
   border-radius: 30px;
-  padding: 0.6em 1.5em; /* adjusts with text size */
-  font-size: clamp(0.8rem, 1.8vw, 1rem); /* scales with screen */
-  display: inline-block;
+  padding: 0.6em 1.5em;
+  font-size: clamp(0.8rem, 1.8vw, 1rem);
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
+
 .btn-learn:hover {
   background: #6d7320;
   transform: scale(1.05);
   text-decoration: none !important;
 }
 
+/* Search Section inside Hero */
 .search-area {
-  margin-top: 40px;
-  margin-bottom: 60px;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
+  width: 100%;
 }
 
-.search-header {
-  text-align: center;
-  color: white;
-  font-weight: 500;
-  margin-left: 20px;
-  margin-top: 20px;
-}
-
-/* Search Section */
 .search-section {
   padding: 15px 20px;
   background: rgba(36, 49, 23, 0.3);
@@ -99,15 +111,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  margin: 0 auto 40px auto; /* Stick near bottom */
-  max-width: 1400px;
   width: 100%;
+  margin: 2rem 0 0 0;
 }
 
 /* Search Item */
 .search-item {
   display: flex;
-  align-items: flex-start; /* icon + text side by side */
+  align-items: center; /* icon + text side by side, vertically centered */
   gap: 12px;
   color: white;
   flex: 1;
@@ -121,16 +132,6 @@
   padding: 6px;
   border-radius: 50%;
   flex-shrink: 0;
-}
-
-.search-item {
-  display: flex;
-  align-items: flex-start; /* icon + text side by side */
-  gap: 12px;
-  color: white;
-  flex: 1;
-  min-width: 200px;
-  align-items: center;
 }
 
 .search-text {
@@ -147,7 +148,6 @@
   margin-bottom: 4px;
 }
 
-/* Inputs & Selects */
 .search-text select,
 .search-text input {
   width: 100%;
@@ -204,16 +204,20 @@
   background: #6c6d21;
   padding: 8px;
   border-radius: 50%;
-  color: #fff; /* For SVGs using currentColor */
-  fill: #fff; /* For SVGs using fill */
+  color: #fff;
+  fill: #fff;
   flex-shrink: 0;
   display: inline-block;
 }
+
 /* Destinations Section */
 .destinations-section {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 20px;
+  width: 100%;
+  margin-top: 2%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .section-heading {
@@ -222,6 +226,7 @@
   font-size: 2.5rem;
   color: #2c3e50;
   font-weight: 300;
+  flex: 1;
 }
 
 .section-subheading {
@@ -231,44 +236,34 @@
   color: #7f8c8d;
   text-transform: uppercase;
   letter-spacing: 2px;
+  flex: 1;
 }
 
-.destinations-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  justify-items: start;
-  align-items: start;
+.scroll,
+.scroll2 {
+  padding: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .destinations-rows {
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: 30px;
-}
-
-.destinations-row {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
   overflow-x: auto;
-  padding-bottom: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: #808626 #f8f9fa;
 }
 
 .destination-card {
   min-width: 380px;
-  max-width: 380px;
+  width: 380px;
   height: 480px;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow: hidden;
 }
 
 .destination-card:hover {
@@ -320,23 +315,14 @@
 .read-more:hover {
   text-decoration: underline;
 }
-
-@media (max-width: 768px) {
-  .destinations-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section-heading {
-    font-size: 2rem;
-  }
-}
 /* Offers Section */
 .offers-section {
-  max-width: 1200px;
-  margin: 80px auto;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
-
 .offers-heading {
   text-align: left;
   margin-bottom: 20px;
@@ -344,7 +330,6 @@
   color: #2c3e50;
   font-weight: 300;
 }
-
 .offers-subheading {
   text-align: left;
   margin-bottom: 50px;
@@ -353,13 +338,6 @@
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-
-.packages-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
-}
-
 .package-card {
   background: white;
   border-radius: 10px;
@@ -369,46 +347,38 @@
   display: flex;
   flex-direction: column;
 }
-
 .package-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
-
 .package-header {
   padding: 25px 25px 15px;
   border-bottom: 1px solid #eee;
 }
-
 .package-header h3 {
   color: #2c3e50;
   font-size: 1.5rem;
   margin-bottom: 8px;
 }
-
 .package-description {
   color: #7f8c8d;
   font-size: 1rem;
   margin-bottom: 5px;
 }
-
 .package-provider {
   color: #808626;
   font-size: 0.9rem;
   font-weight: 500;
 }
-
 .package-features {
   padding: 20px 25px;
   flex-grow: 1;
 }
-
 .feature-item {
   display: flex;
   align-items: flex-start;
   margin-bottom: 12px;
 }
-
 .feature-icon {
   width: 18px;
   height: 18px;
@@ -420,13 +390,11 @@
   flex-shrink: 0;
   margin-top: 3px;
 }
-
 .feature-item span {
   color: #5a5a5a;
   font-size: 0.95rem;
   line-height: 1.4;
 }
-
 .package-footer {
   padding: 20px 25px;
   background: #f8f9fa;
@@ -434,24 +402,20 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .price-info {
   display: flex;
   flex-direction: column;
 }
-
 .per-person {
   color: #7f8c8d;
   font-size: 0.85rem;
   margin-bottom: 5px;
 }
-
 .price {
   color: #2c3e50;
   font-size: 1.5rem;
   font-weight: 600;
 }
-
 .book-now-btn {
   background: #808626;
   color: white;
@@ -462,37 +426,26 @@
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 .book-now-btn:hover {
   background: #6d7320;
 }
 
-@media (max-width: 768px) {
-  .packages-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .offers-heading {
-    font-size: 2rem;
-  }
-
-  .package-footer {
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
-  }
-
-  .book-now-btn {
-    align-self: stretch;
-    text-align: center;
-  }
-}
 /* Testimonials Section */
 .testimonials-section {
   padding: 80px 0;
   margin-top: 80px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.testimonials-section .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+}
 .testimonials-heading {
   text-align: left;
   font-size: 2.5rem;
@@ -500,16 +453,13 @@
   margin-bottom: 50px;
   font-weight: 300;
 }
-
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
-
 .testimonial-card {
   background: white;
   border-radius: 10px;
@@ -520,17 +470,15 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 250px;
+  flex: 1;
 }
-
 .testimonial-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
-
 .testimonial-content {
   margin-bottom: 20px;
 }
-
 .testimonial-content p {
   color: #5a5a5a;
   line-height: 1.6;
@@ -538,9 +486,8 @@
   position: relative;
   padding-left: 30px;
 }
-
 .testimonial-content p::before {
-  content: '"'; /* Fixed: Use single quotes around the double quote character */
+  content: '"';
   position: absolute;
   left: 0;
   top: -10px;
@@ -548,190 +495,53 @@
   color: #b7b838;
   font-family: Georgia, serif;
 }
-
 .testimonial-author {
   display: flex;
   align-items: center;
   border-top: 1px solid #b7b838;
   padding-top: 20px;
 }
-
 .author-image {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background-color: #b7b838;
   margin-right: 15px;
-  /* Background image would go here */
 }
-
 .author-details h4 {
   color: #2c3e50;
   margin: 0;
   font-size: 1.1rem;
 }
-
 .author-details p {
   color: #7f8c8d;
   margin: 5px 0 0;
   font-size: 0.9rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .testimonials-heading {
-    font-size: 2rem;
-  }
-
-  .testimonial-card {
-    padding: 20px;
-  }
-}
-
-/* Optional decorative elements */
-.testimonials-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, #808626, #6d7320);
-}
-
-.testimonial-content p::after {
-  content: '"'; /* Fixed: Use single quotes around the double quote character */
-  position: absolute;
-  right: 0;
-  bottom: -30px;
-  font-size: 3rem;
-  color: #b7b838;
-  font-family: Georgia, serif;
-  transform: rotate(180deg);
-}
-
-/* Star rating (if you want to add ratings later) */
-.testimonial-rating {
-  color: #b7b838;
-  margin-bottom: 10px;
-}
-
 /* Carousel Section */
-.carousel-row {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.carousel-track {
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  width: 100%;
-  padding-bottom: 10px;
-  position: relative;
-}
-
-.carousel-cards {
-  display: flex;
-  gap: 30px;
-}
-
-/* Place dots at the bottom of the cards */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 32px; /* More space below cards */
-  margin-bottom: 0; /* No extra space below dots */
-  width: 100%;
-  position: static; /* Ensure dots are below the cards, not overlayed */
-}
-
-.carousel-dot {
-  width: 10px;
-  height: 10px;
-  background: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.carousel-dot.active {
-  background: #808626;
-}
-
-/* Offers Carousel Section */
+.carousel-row,
 .offers-carousel-row {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  margin-bottom: 40px;
 }
-
+.carousel-track,
 .offers-carousel-track {
-  overflow: hidden;
-  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
   position: relative;
-  height: 100%;
+  max-width: 1200px;
 }
 
+.carousel-cards,
 .offers-carousel-cards {
   display: flex;
-  width: 100%;
+  gap: 30px;
+  padding: 10px;
 }
-
-.offers-carousel-card {
-  min-width: 350px;
-  max-width: 350px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  margin-right: 30px;
-}
-
-.carousel-arrow {
-  background: #808626;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-.carousel-arrow.left {
-  left: 0;
-  margin-right: 10px;
-}
-
-.carousel-arrow.right {
-  right: 0;
-  margin-left: 10px;
-}
-
-.carousel-arrow:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .carousel-dots {
   display: flex;
   justify-content: center;
@@ -739,7 +549,6 @@
   gap: 8px;
   width: 100%;
 }
-
 .carousel-dot {
   width: 10px;
   height: 10px;
@@ -749,19 +558,9 @@
   cursor: pointer;
   transition: background 0.2s;
 }
-
 .carousel-dot.active {
   background: #808626;
 }
-
-.carousel-row,
-.offers-carousel-row {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
 .carousel-arrow,
 .offers-carousel-row .carousel-arrow {
   position: absolute;
@@ -781,43 +580,155 @@
   justify-content: center;
   transition: background 0.2s;
 }
-
 .carousel-arrow.left {
   left: 0;
 }
-
 .carousel-arrow.right {
   right: 0;
 }
 
-.offers-carousel-row .carousel-arrow.left {
-  left: 0;
-}
-
-.offers-carousel-row .carousel-arrow.right {
-  right: 0;
-}
-
-.carousel-track,
-.offers-carousel-track {
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  width: 100%;
-  padding-bottom: 10px;
-  position: relative;
-}
-
-/* Remove margin on arrows for better side placement */
-.carousel-arrow.left,
-.carousel-arrow.right,
-.offers-carousel-row .carousel-arrow.left,
-.offers-carousel-row .carousel-arrow.right {
-  margin: 0;
-}
-
-/* Remove purple + underline from all links */
+/* Remove underline for all links */
 a,
 a:visited {
-  color: white; /* or inherit if you want it to follow parent */
-  text-decoration: none; /* removes underline */
+  color: white;
+  text-decoration: none;
+}
+
+/* ===== RESPONSIVE FIXES ===== */
+
+@media (max-width: 1024px) {
+  .search-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 50%;
+    padding-top: 4%;
+    padding-bottom: 2%;
+  }
+  .scroll,
+  .scroll2 {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .section-heading,
+  .offers-heading,
+  .testimonials-heading {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .hero-overlay p {
+    width: 65%;
+    padding: 10px;
+  }
+  .search-header {
+    margin-left: 0;
+  }
+
+  .search-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+  }
+
+  .carousel-track {
+    width: 60%;
+  }
+
+  .offers-carousel-cards {
+    display: flex;
+    flex-direction: column;
+  }
+  .scroll2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 30%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .hero-overlay {
+    width: 100%;
+  }
+  .search-section {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .search-button {
+    position: relative;
+    transform: none;
+    left: auto;
+    top: auto;
+  }
+  .destinations-rows,
+  .offers-carousel-cards,
+  .carousel-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .scroll,
+  .scroll2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .carousel-dots {
+    display: none;
+  }
+
+  .carousel-track {
+    padding: 10px;
+  }
+  .carousel-track,
+  .destination-card,
+  .offers-carousel-card,
+  .package-card {
+    width: 100%;
+    min-width: auto;
+  }
+  .testimonial-card {
+    width: 100%;
+  }
+  .package-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .book-now-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .HeroHeader {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  .hero-header {
+    font-size: clamp(0.9rem, 3vw, 1.5rem);
+  }
+  .hero-Subheader {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+  }
+  .search-area {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  .package-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .book-now-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
