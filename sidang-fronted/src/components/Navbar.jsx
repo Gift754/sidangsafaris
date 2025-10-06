@@ -10,6 +10,7 @@ import { HiMenu, HiX } from "react-icons/hi";
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [ham, setHam] = useState(false);
+  const [startDate, setStartDate] = useState(null);
 
   const handleClick = () => {
     setHam(!ham);
@@ -34,21 +35,21 @@ function Navbar() {
           </Link>
           {open && (
             <div className={`hoverNav ${open ? "show" : ""}`}>
-              <Link className="navhover" to="about">
+              <Link className="navhover" to="about" onClick={handleClick}>
                 About Us
               </Link>
-              <Link className="navhover" to="destination">
+              <Link className="navhover" to="destination" onClick={handleClick}>
                 Destinations
               </Link>
             </div>
           )}
         </div>
 
-        <Link className="navlist" to="/booking">
+        <Link className="navlist" to="/booking" onClick={handleClick}>
           Booking
         </Link>
 
-        <Link className="navlist" to="/contact">
+        <Link className="navlist" to="/contact" onClick={handleClick}>
           Contact Us
         </Link>
       </nav>

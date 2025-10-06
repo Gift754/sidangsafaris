@@ -30,7 +30,7 @@
 
 .navlist {
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   text-decoration: none;
   gap: 10px;
 }
@@ -125,9 +125,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .topNav {
-  }
-
   .navlist,
   .desktopBook p {
     font-size: 15px;
@@ -138,7 +135,7 @@
   }
 
   .desktopBook {
-    height: 40px;
+    height: 30px;
   }
 
   .book {
@@ -147,6 +144,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .navbar .logo {
+    width: 10%;
+  }
   .bookLink {
     display: none;
   }
@@ -154,13 +154,15 @@
   .topNav {
     display: none;
     flex-direction: column;
-    width: 100%;
+    width: 110%;
     position: absolute;
-    left: 0;
-    padding-top: 30%;
+    left: -20px;
+    top: 2%;
+    padding-top: 10%;
     padding-bottom: 10%;
     gap: 20px;
     border-radius: 0;
+    height: 500px;
   }
 
   .topNav.showMenu {
