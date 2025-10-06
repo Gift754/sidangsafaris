@@ -18,13 +18,20 @@
   font-weight: 400;
   font-style: italic;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-body {
+body,
+.wrapper {
   margin: 0;
   padding: 0;
 }
 
-.home-holder {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("./assets/images/general/Hero.jpg");
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
