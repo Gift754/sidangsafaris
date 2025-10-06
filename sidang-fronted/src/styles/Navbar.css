@@ -1,0 +1,98 @@
+.navbar,
+.topNav,
+.navlist,
+.bookLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar .logo {
+  width: 8%;
+}
+
+.topNav {
+  width: 40%;
+  background: rgba(108, 109, 33, 0.3);
+  padding: 2%;
+  border-radius: 50px;
+}
+
+.navlist {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  gap: 10px;
+}
+
+.desktopBook {
+  background: rgba(108, 109, 33, 0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin: auto;
+  border: none;
+  border-radius: 30px;
+}
+
+.desktopBook p {
+  font-size: 15px;
+}
+
+.bookLink {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 10%;
+  text-decoration: none;
+}
+
+.book {
+  width: 20%;
+}
+
+.hoverNav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  gap: 10px;
+  background: #7b7c26;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+
+  top: 13%;
+}
+
+.navhover {
+  color: white;
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.3s ease;
+  padding: 10px;
+  width: 150%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.navhover:hover {
+  background: #6c6d21;
+}
