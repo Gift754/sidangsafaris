@@ -93,6 +93,8 @@
 .input-group select {
   background: transparent;
   border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .input-group label {
@@ -126,4 +128,114 @@ option[value=""] {
   color: white;
   border-radius: 50px;
   border: none;
+}
+
+.grid-view {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.destination-card {
+  height: 350px;
+  width: 100%;
+  background-size: cover;
+  border-radius: 30px;
+}
+
+.pointer {
+  width: 10%;
+
+  margin-left: 80%;
+  margin-top: 10%;
+}
+
+.title {
+  margin-top: 70%;
+  text-align: center;
+  color: white;
+}
+
+.tags {
+  margin-left: 3%;
+}
+
+.DestinationsPage {
+  padding: 20px;
+  padding-top: 5%;
+}
+
+.DestinationsPage h2 {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .HomePage {
+    padding-top: 10%;
+  }
+  .grid-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-bar {
+    width: 70%;
+  }
+
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .search-item {
+    width: 100%;
+  }
+
+  .input-group select,
+  .input-group input {
+    width: 100%;
+  }
+
+  .dest {
+    margin-left: -2%;
+  }
+  .search-button {
+    width: 40%;
+    height: 40px;
+  }
+
+  .title {
+    margin-top: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .head1 {
+    font-size: 20px;
+  }
+
+  .head2 {
+    font-size: 50px;
+  }
+  .grid-view {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .pointer {
+    width: 5%;
+    margin-left: 90%;
+  }
+
+  .title {
+    margin-top: 35%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .title {
+    margin-top: 40%;
+  }
 }

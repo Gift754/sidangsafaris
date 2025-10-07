@@ -3,14 +3,13 @@ import Logo from "../assets/images/logo/sidang_logo.svg";
 import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
-import Book from "../assets/icons/image.png";
+import Book from "../assets/icons/pointer.png";
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [ham, setHam] = useState(false);
-  const [startDate, setStartDate] = useState(null);
 
   const handleClick = () => {
     setHam(!ham);
@@ -29,7 +28,7 @@ function Navbar() {
           Home
         </Link>
         <div className="hover-content">
-          <Link className="navlist explore" to="/explore" onClick={handleOpen}>
+          <Link className="navlist explore" onClick={handleOpen}>
             Explore
             <FaCaretDown className="dropIcon" />
           </Link>

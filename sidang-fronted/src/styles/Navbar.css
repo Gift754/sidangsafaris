@@ -13,7 +13,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   position: fixed;
-  width: 95%;
+  width: 100%;
 }
 
 .navbar .logo {
@@ -21,7 +21,7 @@
 }
 
 .topNav {
-  width: 40%;
+  width: 50%;
   background: rgba(108, 109, 33, 0.3);
   padding: 2%;
   border-radius: 50px;
