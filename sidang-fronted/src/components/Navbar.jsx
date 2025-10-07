@@ -3,7 +3,7 @@ import Logo from "../assets/images/logo/sidang_logo.svg";
 import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
-import Book from "../assets/icons/image.png";
+import Book from "../assets/icons/pointer.png";
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 
@@ -28,27 +28,27 @@ function Navbar() {
           Home
         </Link>
         <div className="hover-content">
-          <Link className="navlist explore" to="/explore" onClick={handleOpen}>
+          <Link className="navlist explore" onClick={handleOpen}>
             Explore
             <FaCaretDown className="dropIcon" />
           </Link>
           {open && (
             <div className={`hoverNav ${open ? "show" : ""}`}>
-              <Link className="navhover" to="about">
+              <Link className="navhover" to="about" onClick={handleClick}>
                 About Us
               </Link>
-              <Link className="navhover" to="destination">
+              <Link className="navhover" to="destination" onClick={handleClick}>
                 Destinations
               </Link>
             </div>
           )}
         </div>
 
-        <Link className="navlist" to="/booking">
+        <Link className="navlist" to="/booking" onClick={handleClick}>
           Booking
         </Link>
 
-        <Link className="navlist" to="/contact">
+        <Link className="navlist" to="/contact" onClick={handleClick}>
           Contact Us
         </Link>
       </nav>

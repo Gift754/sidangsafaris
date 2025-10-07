@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap");
+
+body {
+  font-family: "Roboto Slab", serif;
+}
+
+body::-webkit-scrollbar {
+  width: 0; /* width of the scrollbar */
+}
+
 @font-face {
   font-family: "Roboto Slab";
   src: url("./assets/fonts/RobotoSlab-Regular.ttf") format("truetype");
@@ -18,13 +28,20 @@
   font-weight: 400;
   font-style: italic;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-body {
+body,
+.wrapper {
   margin: 0;
   padding: 0;
 }
 
-.home-holder {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("./assets/images/general/Hero.jpg");
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
