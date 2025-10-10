@@ -1,0 +1,183 @@
+.booking-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 40px;
+  margin-top: 80px;
+}
+
+.booking-card {
+  padding: 30px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.booking-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 25px;
+  background: #eee;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background: #6d7320;
+  color: white;
+}
+
+.trip-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.trip-field {
+  background: #f7f7f7;
+  border-radius: 25px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.trip-field .icon {
+  margin-right: 8px;
+  font-size: 22px;
+  color: #6d7320;
+  border-radius: 0;
+  background: none;
+  padding: 0;
+}
+
+.trip-field select,
+.trip-field input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 15px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.firstname,
+.email,
+.lastname,
+.payment,
+.booking-form textarea,
+.booking-form select {
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+  width: 100%;
+}
+
+.booking-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.pay-btn {
+  background: #6d7320;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.pay-btn:hover {
+  background: #808626;
+}
+
+.payment-prompt {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.prompt-content {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.pay-option {
+  background: #6d7320;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: background 0.3s;
+}
+
+.pay-option.cancel {
+  background: #ccc;
+  color: #333;
+}
+
+.pay-option:hover:not(.cancel) {
+  background: #808626;
+}
+
+@media (max-width: 900px) {
+  .booking-card {
+    max-width: 95vw;
+    padding: 18px;
+  }
+  .booking-container {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .trip-details,
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .booking-card {
+    padding: 8px;
+  }
+}
