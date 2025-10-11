@@ -1,0 +1,154 @@
+.Packages {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.packages-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.package-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 10px;
+}
+
+.package-card:hover {
+  transform: translateY(-5px);
+}
+
+.package-img {
+  width: 90%;
+  border-radius: 70px;
+}
+
+.package-content {
+  padding: 15px 20px;
+}
+
+.package-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.package-desc {
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.package-list {
+  font-size: 0.85rem;
+  color: #333;
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.package-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.price-label {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.price-value {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.rate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 10px;
+}
+
+.star {
+  color: yellow;
+}
+
+.book-btn {
+  background-color: #556b2f;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 2px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.3s;
+}
+
+.book-btn:hover {
+  background-color: #6b8e23;
+}
+
+.rating-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.custom-prev,
+.custom-next {
+  color: #fff;
+
+  border: 1px solid black;
+  border-radius: 100%;
+  padding: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arrow {
+  color: black;
+}
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  background-color: #ccc;
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background-color: #556b2f;
+}

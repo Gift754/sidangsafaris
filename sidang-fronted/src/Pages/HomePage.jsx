@@ -11,6 +11,8 @@ import DateIcon from "../assets/icons/date.png"; // renamed to avoid clash with 
 import Guests from "../assets/icons/guests.png";
 import Price from "../assets/icons/price.png";
 import DestinationsPage from "./DestinationsPage";
+import Packages from "../components/Packages";
+import Contact from "../components/Contact";
 
 function HomePage() {
   const [startDate, setStartDate] = useState(null);
@@ -121,6 +123,8 @@ function HomePage() {
         </form>
       </div>
       <DestinationsPage />
+      <Packages />
+      <Contact />
     </div>
   );
 }
