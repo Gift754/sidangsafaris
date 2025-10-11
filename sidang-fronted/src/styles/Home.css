@@ -1,3 +1,7 @@
+.landing {
+  width: 100%;
+}
+
 .HomePage {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("../assets//images/general/main.jpg") no-repeat center center fixed;
@@ -10,6 +14,7 @@
   justify-content: center;
   flex-direction: column;
   padding-bottom: 6%;
+  flex: 1;
 }
 
 .head1,
@@ -164,9 +169,11 @@ option[value=""] {
 .DestinationsPage {
   padding: 20px;
   padding-top: 5%;
+  width: 100%;
 }
 
-.DestinationsPage h2 {
+.DestinationsPage h2,
+.Packages h2 {
   font-size: 30px;
 }
 
@@ -234,8 +241,8 @@ option[value=""] {
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 540px) {
   .title {
-    margin-top: 40%;
+    margin-top: 65%;
   }
 }
