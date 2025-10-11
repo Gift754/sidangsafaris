@@ -13,6 +13,7 @@ import Price from "../assets/icons/price.png";
 import DestinationsPage from "./DestinationsPage";
 import Packages from "../components/Packages";
 import Contact from "../components/Contact";
+import EmailSubscription from "../components/EmailSubscription";
 
 function HomePage() {
   const [startDate, setStartDate] = useState(null);
@@ -125,6 +126,7 @@ function HomePage() {
       <DestinationsPage />
       <Packages />
       <Contact />
+      <EmailSubscription />
     </div>
   );
 }

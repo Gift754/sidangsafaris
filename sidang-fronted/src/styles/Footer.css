@@ -2,11 +2,11 @@
   display: flex;
   background-color: #7b7c26;
   padding: 10px;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .logo-footer {
-  width: 30%;
+  width: 40%;
 }
 
 .socials {
@@ -15,6 +15,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  width: 20%;
 }
 
 .social-links {
@@ -75,4 +76,37 @@
 
 .foot-links {
   text-decoration: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .quick-destinations {
+    padding-right: 0px;
+  }
+
+  .socials {
+    width: 20%;
+  }
+
+  .logo-footer {
+    width: 70%;
+  }
+
+  .find-me h3,
+  .quick-links h3,
+  .quick-destinations h3 {
+    font-size: 16px;
+  }
+
+  .find-me p,
+  .quick-destinations ul li,
+  .foot-links {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 20px;
+  }
 }

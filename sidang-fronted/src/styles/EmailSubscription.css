@@ -1,0 +1,58 @@
+.subscription {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0.69)),
+    url("../assets//images/general/pexels-chomolla-2343011.jpg") no-repeat
+      center center;
+  background-size: cover;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  gap: 20px;
+}
+
+.subscription h2 {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.subscription p {
+  width: 50%;
+  text-align: center;
+  color: white;
+  font-weight: 100;
+}
+
+.subscribe-form {
+  margin-top: 5%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.subscribe-form input {
+  width: 40%;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #4a4b25;
+  padding: 10px;
+}
+
+.subscribe-form input::placeholder {
+  font-size: 1.2rem;
+}
+
+.subscribe-btn {
+  padding: 15px;
+  width: 10%;
+  background: rgba(108, 109, 33, 0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: none;
+  color: white;
+}
