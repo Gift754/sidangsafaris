@@ -27,6 +27,7 @@
   padding: 2%;
   border-radius: 50px;
   height: 10px;
+  margin-left: 10%;
 }
 
 .navlist {
@@ -73,6 +74,7 @@
   position: absolute;
   gap: 10px;
   background: #7b7c26;
+  margin-top: 4%;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 50px;
@@ -141,6 +143,12 @@
 
   .book {
     width: 12%;
+  }
+
+  .topNav {
+    height: 60px;
+    width: 60%;
+    margin-left: 15%;
   }
 }
 

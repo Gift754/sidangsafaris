@@ -60,14 +60,13 @@ function Packages() {
   const paginationRef = useRef(null);
   const [swiperReady, setSwiperReady] = useState(false);
 
-  // Wait for refs to exist before initializing Swiper
   useEffect(() => {
     setSwiperReady(true);
   }, []);
 
   return (
     <div className="Packages">
-      <p className="tags">Explore Our Offers</p>
+      <p className="tags tag">Explore Our Offers</p>
       <h2 className="tags">Recommended Packages</h2>
 
       {swiperReady && (

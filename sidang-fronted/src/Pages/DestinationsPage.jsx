@@ -20,20 +20,16 @@ const destinations = [
 
 function DestinationsPage() {
   return (
-    <div className="DestinationsPage">
-      <p className="tags">Get To Explore Different Destinations</p>
-      <h2 className="tags">Featured Destinations</h2>
-      <div className="grid-view">
-        {destinations.map((destination, index) => {
-          return (
-            <DestinationCard
-              key={index}
-              title={destination.title}
-              image={destination.image}
-            />
-          );
-        })}
-      </div>
+    <div className="grid-view">
+      {destinations.map((destination, index) => {
+        return (
+          <DestinationCard
+            key={index}
+            title={destination.title}
+            image={destination.image}
+          />
+        );
+      })}
     </div>
   );
 }
