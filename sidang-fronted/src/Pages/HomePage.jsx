@@ -13,7 +13,8 @@ import Price from "../assets/icons/price.png";
 import DestinationsPage from "./DestinationsPage";
 import Packages from "../components/Packages";
 import Contact from "../components/Contact";
-import EmailSubscription from "../components/EmailSubscription";
+
+import Reviews from "../components/Reviews";
 
 function HomePage() {
   const [startDate, setStartDate] = useState(null);
@@ -123,10 +124,14 @@ function HomePage() {
           </div>
         </form>
       </div>
-      <DestinationsPage />
+      <div className="DestinationsPage">
+        <p className="tags tag">Get To Explore Different Destinations</p>
+        <h2 className="tags">Featured Destinations</h2>
+        <DestinationsPage />
+      </div>
       <Packages />
+      <Reviews />
       <Contact />
-      <EmailSubscription />
     </div>
   );
 }
