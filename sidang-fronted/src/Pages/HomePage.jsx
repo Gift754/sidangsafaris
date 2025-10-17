@@ -13,11 +13,20 @@ import Price from "../assets/icons/price.png";
 import DestinationsPage from "./DestinationsPage";
 import Packages from "../components/Packages";
 import Contact from "../components/Contact";
-
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Reviews from "../components/Reviews";
 
 function HomePage() {
   const [startDate, setStartDate] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollToContact) {
+      const contactSection = document.getElementById("contact");
+      contactSection?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
 
   return (
     <div className="landing">
@@ -131,7 +140,7 @@ function HomePage() {
       </div>
       <Packages />
       <Reviews />
-      <Contact />
+      <Contact id="contact" />
     </div>
   );
 }
